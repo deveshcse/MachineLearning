@@ -32,3 +32,15 @@ model.wv.most_similar("bad")
 
 # Calculate the similarity between the words "great" and "good" in the trained model's vocabulary
 model.wv.similarity(w1="great", w2="good")
+
+
+# Load the saved Word2Vec model from the file
+model = gensim.models.Word2Vec.load("./News_Embeddings_gensim.model")
+
+# Find the most similar words to the word "bad" in the trained model's vocabulary
+similar_words = model.wv.most_similar("bad")
+print("Most similar words to 'bad':", similar_words)
+
+# Calculate the similarity between the words "great" and "good" in the trained model's vocabulary
+similarity_score = model.wv.similarity(w1="great", w2="good")
+print("Similarity between 'great' and 'good':", similarity_score)

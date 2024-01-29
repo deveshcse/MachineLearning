@@ -1,5 +1,5 @@
-
 import pandas as pd
+import tensorflow as tf
 from tensorflow.keras.preprocessing.text import one_hot
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow.keras.models import Sequential
@@ -41,3 +41,13 @@ model.summary()
 
 # Print the embedding vector for the first document in the dataset
 print(model.predict(embedded_docs[0:1]))
+
+
+# Save the model to a file
+model.save("embedding_model.h5")
+
+# Load the model from the file
+loaded_model = tf.keras.models.load_model("embedding_model.h5")
+
+# Print the embedding vector for the first document in the dataset using the loaded model
+print(loaded_model.predict(embedded_docs[0:1]))
